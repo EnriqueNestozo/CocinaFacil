@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CocinaFacil</string>
+    <string name="textView_usuario">Usuario/correo</string>
+    <string name="textView_contrasena">Contraseña</string>
+</resources>
