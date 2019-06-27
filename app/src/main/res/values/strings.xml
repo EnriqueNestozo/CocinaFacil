@@ -2,4 +2,8 @@
     <string name="app_name">CocinaFacil</string>
     <string name="textView_usuario">Usuario/correo</string>
     <string name="textView_contrasena">Contraseña</string>
+    <string name="button_autenticar">Autenticar</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
