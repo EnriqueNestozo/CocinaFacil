@@ -12,11 +12,11 @@ public interface AutenticacionContract {
     }
 
     interface presenter extends BasePresenter {
-        void obtenerRespuesta(String usuario, String contrasena);
+        void obtenerRespuesta(String correo, String contrasena);
     }
 
     interface model extends BaseModel {
         void setPresenter(AutenticacionContract.presenter presenter);
-        boolean signIn(Account account);
+        boolean signIn(String correo, String contrasena);
     }
 }

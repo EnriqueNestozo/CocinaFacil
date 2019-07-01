@@ -9,28 +9,24 @@ public class MainPresenterImpl implements AutenticacionContract.presenter {
     public MainPresenterImpl(AutenticacionContract.view view){
         this.view = view;
         this.view.setPresenter(this);
-        this.model = new AutenticacionModel();
+        this.model = new AutenticationByEmailModel();
         this.model.setPresenter(this);
     }
 
     @Override
-    public void obtenerRespuesta(String usuario, String contrasena) {
+    public void obtenerRespuesta(String correo, String contrasena) {
         //Consulta a bd
-        if(model.signIn(new Account(usuario,contrasena))){
-            view.cargarActivityCatalogos();
-        }else{
-            view.mostrarError("Usuario y/o contraseña incorrectos");
-        }
-
+        model.signIn(correo,contrasena);
     }
 
     @Override
     public void subscribe() {
-
+        //Crear instancia singleton de Account;
+        view.cargarActivityCatalogos();
     }
 
     @Override
     public void unSubscribe() {
-
+        view.mostrarError("Usuario y/o contraseña incorrectos");
     }
 }

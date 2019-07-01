@@ -1,6 +1,7 @@
 package com.nestozo.enriq.cocinafacil.Autenticacion;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -15,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.nestozo.enriq.cocinafacil.R;
+import com.nestozo.enriq.cocinafacil.VerPlatillos.CatalogosActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -123,7 +125,9 @@ public class MainFragment extends Fragment implements AutenticacionContract.view
 
     @Override
     public void cargarActivityCatalogos() {
-
+        Intent intento = new Intent(getActivity(), CatalogosActivity.class);
+        startActivity(intento);
+        getActivity().overridePendingTransition(0,0);
     }
 
     @Override

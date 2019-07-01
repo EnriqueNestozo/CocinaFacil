@@ -1,20 +1,28 @@
 package com.nestozo.enriq.cocinafacil;
 
 public class Account {
-    private String nombre;
-    private String contrasena;
+    private static String nombre;
+    private static String contrasena;
+    private static Account cuenta;
 
-    public Account(String nombre, String contrasena){
+    private Account(String nombre, String contrasena){
         this.nombre = nombre;
         this.contrasena = contrasena;
     }
 
-    public String getContrasena() {
+    public static String getContrasena() {
         return contrasena;
     }
 
-    public String getnombre() {
+    public static String getnombre() {
         return nombre;
+    }
+
+    public static Account getAccountInstance(String nombre, String contrasena){
+        if(cuenta==null){
+            cuenta = new Account(nombre, contrasena);
+        }
+        return cuenta;
     }
 
 }
