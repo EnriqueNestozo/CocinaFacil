@@ -1,4 +1,5 @@
 package com.nestozo.enriq.cocinafacil;
 
-public interface BaseModel {
+public interface BaseModel<T> {
+    void setPresenter(T presenter);
 }

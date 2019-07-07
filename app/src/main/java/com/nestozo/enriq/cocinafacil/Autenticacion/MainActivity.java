@@ -20,6 +20,20 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnFr
         commitFragment();
     }
 
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+        presenter.subscribe();
+    }
+
+    @Override
+    protected void onPause() {
+
+        super.onPause();
+        presenter.subscribe();
+    }
+
     private void commitFragment(){
         MainFragment mainFragment = new MainFragment();
         presenter = new MainPresenterImpl(mainFragment);

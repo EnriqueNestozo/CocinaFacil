@@ -14,19 +14,34 @@ public class MainPresenterImpl implements AutenticacionContract.presenter {
     }
 
     @Override
-    public void obtenerRespuesta(String correo, String contrasena) {
-        //Consulta a bd
-        model.signIn(correo,contrasena);
+    public void getLogInResponse(String correo, String contrasena) {
+        model.logIn(correo,contrasena);
+    }
+
+    @Override
+    public void saveAccountInstance(String correo, String contrasena) {
+        Account.getAccountInstance(correo,contrasena);
+        updateViewToCatalogos();
+    }
+
+    @Override
+    public void updateViewToCatalogos() {
+        view.displayCatalogosActivity();
+    }
+
+    @Override
+    public void updateViewToFailAutentication(String message) {
+        view.displayErrorMessage("Usuario y/o contraseña incorrectos");
     }
 
     @Override
     public void subscribe() {
-        //Crear instancia singleton de Account;
-        view.cargarActivityCatalogos();
+
+
     }
 
     @Override
     public void unSubscribe() {
-        view.mostrarError("Usuario y/o contraseña incorrectos");
+
     }
 }

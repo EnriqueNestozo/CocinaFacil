@@ -7,7 +7,6 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -118,13 +117,12 @@ public class MainFragment extends Fragment implements AutenticacionContract.view
     }
 
     @Override
-    public void mostrarError(String valor) {
-
+    public void displayErrorMessage(String valor) {
         Toast.makeText(getActivity(),valor,Toast.LENGTH_LONG).show();
     }
 
     @Override
-    public void cargarActivityCatalogos() {
+    public void displayCatalogosActivity() {
         Intent intento = new Intent(getActivity(), CatalogosActivity.class);
         startActivity(intento);
         getActivity().overridePendingTransition(0,0);
@@ -153,6 +151,6 @@ public class MainFragment extends Fragment implements AutenticacionContract.view
 
     @OnClick(R.id.buttonAutenticar)
     public void autenticar(){
-        presenter.obtenerRespuesta(usuario.getText().toString(),contrasena.getText().toString());
+        presenter.getLogInResponse(usuario.getText().toString(),contrasena.getText().toString());
     }
 }

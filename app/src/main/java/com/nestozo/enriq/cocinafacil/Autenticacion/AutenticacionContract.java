@@ -7,16 +7,19 @@ import com.nestozo.enriq.cocinafacil.Account;
 
 public interface AutenticacionContract {
     interface view extends BaseView<MainPresenterImpl> {
-        void mostrarError(String value);
-        void cargarActivityCatalogos();
+        void displayErrorMessage(String value);
+        void displayCatalogosActivity();
     }
 
     interface presenter extends BasePresenter {
-        void obtenerRespuesta(String correo, String contrasena);
+        void saveAccountInstance(String correo, String contrasena);
+        void getLogInResponse(String correo, String contrasena);
+        void updateViewToCatalogos();
+        void updateViewToFailAutentication(String message);
+
     }
 
     interface model extends BaseModel {
-        void setPresenter(AutenticacionContract.presenter presenter);
-        boolean signIn(String correo, String contrasena);
+        void logIn(String correo, String contrasena);
     }
 }

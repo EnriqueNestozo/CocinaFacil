@@ -11,13 +11,9 @@ import com.nestozo.enriq.cocinafacil.Account;
 public class AutenticationByEmailModel implements AutenticacionContract.model {
     private AutenticacionContract.presenter presenter;
     private FirebaseAuth firebaseAuth;
-    @Override
-    public void setPresenter(AutenticacionContract.presenter presenter) {
-        this.presenter = presenter;
-    }
 
     @Override
-    public boolean signIn(String correo, String contrasena) {
+    public void logIn(String correo, String contrasena) {
         boolean autenticado = false;
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseAuth.signInWithEmailAndPassword(correo, contrasena)
@@ -25,12 +21,16 @@ public class AutenticationByEmailModel implements AutenticacionContract.model {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            presenter.subscribe();
+                            presenter.saveAccountInstance(correo, contrasena);
                         }else{
-                            presenter.unSubscribe();
+                            presenter.updateViewToFailAutentication("Usuario y/o contraseña");
                         }
                     }
                 });
-        return autenticado;
+    }
+
+    @Override
+    public void setPresenter(Object presenter) {
+        this.presenter = (AutenticacionContract.presenter) presenter;
     }
 }
